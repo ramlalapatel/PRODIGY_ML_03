@@ -10,6 +10,7 @@ import { InferencePlayground } from './components/InferencePlayground';
 import { EvaluationDashboard } from './components/EvaluationDashboard';
 import { ReadmeViewer } from './components/ReadmeViewer';
 import { ParametersModal } from './components/ParametersModal';
+import { GithubDeployModal } from './components/GithubDeployModal';
 import {
   NOTEBOOK_CELLS,
   DEFAULT_PARAMETERS,
@@ -26,6 +27,7 @@ export default function App() {
   const [kernelComparisons, setKernelComparisons] = useState<KernelComparison[]>(KERNEL_COMPARISONS);
   const [isRunningAll, setIsRunningAll] = useState<boolean>(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
+  const [isDeployOpen, setIsDeployOpen] = useState<boolean>(false);
 
   // Recalibrate simulated metrics when parameters change
   const recalculateMetrics = (p: ModelParameters) => {
@@ -156,6 +158,7 @@ export default function App() {
         isRunningAll={isRunningAll}
         onRunAll={handleRunAll}
         onOpenSettings={() => setIsSettingsOpen(true)}
+        onOpenDeploy={() => setIsDeployOpen(true)}
         params={params}
       />
 
@@ -195,6 +198,13 @@ export default function App() {
         onClose={() => setIsSettingsOpen(false)}
         params={params}
         onApply={handleApplyParams}
+      />
+
+      {/* GitHub Deployment & Link Generator Modal */}
+      <GithubDeployModal
+        isOpen={isDeployOpen}
+        onClose={() => setIsDeployOpen(false)}
+        params={params}
       />
     </div>
   );

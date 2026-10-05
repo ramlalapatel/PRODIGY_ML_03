@@ -1,5 +1,5 @@
 import React from 'react';
-import { Play, Download, Settings2, CheckCircle2, FileCode, BookOpen } from 'lucide-react';
+import { Play, Download, Settings2, CheckCircle2, FileCode, BookOpen, Github } from 'lucide-react';
 import { downloadFile } from '../utils/downloadHelper';
 import { generateJupyterNotebookJson, getStandalonePythonScript } from '../data/notebookData';
 import { ModelParameters } from '../types';
@@ -10,6 +10,7 @@ interface HeaderProps {
   isRunningAll: boolean;
   onRunAll: () => void;
   onOpenSettings: () => void;
+  onOpenDeploy: () => void;
   params: ModelParameters;
 }
 
@@ -19,6 +20,7 @@ export const Header: React.FC<HeaderProps> = ({
   isRunningAll,
   onRunAll,
   onOpenSettings,
+  onOpenDeploy,
   params,
 }) => {
   const [showExportMenu, setShowExportMenu] = React.useState(false);
@@ -112,6 +114,16 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Zone 3: 1-2 primary actions */}
         <div className="flex items-center gap-2 relative">
+          <button
+            onClick={onOpenDeploy}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 border border-slate-700/80 rounded-lg transition-colors cursor-pointer whitespace-nowrap shadow-sm"
+            title="Deploy repository to GitHub and generate live Google Colab link"
+          >
+            <Github className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">Deploy & Links</span>
+            <span className="sm:hidden">Deploy</span>
+          </button>
+
           <button
             onClick={onOpenSettings}
             title="Configure parameters (SAMPLE_SIZE, HOG, PCA, Kernels)"
