@@ -1,0 +1,6 @@
+{
+  "name": "PRODIGY_ML_03 - Cats vs Dogs SVM Classification",
+  "description": "Interactive Google Colab notebook studio for classifying cats and dogs using Support Vector Machines (SVM), OpenCV preprocessing, and HOG feature extraction.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
