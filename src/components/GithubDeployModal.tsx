@@ -144,6 +144,36 @@ git push -u origin ${cleanBranch}`;
             </div>
           </div>
 
+          {/* GitHub Actions Fix Alert Banner */}
+          <div className="bg-amber-950/40 border border-amber-500/50 rounded-xl p-4 space-y-2">
+            <div className="flex items-center gap-2 text-amber-300 font-bold text-xs">
+              <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
+              <span>GitHub Actions Link Generate Hone Ka Reason & Solution:</span>
+            </div>
+            <div className="text-[11px] text-slate-300 space-y-1.5 leading-relaxed">
+              <p>
+                Agar GitHub Actions run hone ke baad bhi link generate nahi ho rahi, toh 99% cases me yeh reason hota hai:
+              </p>
+              <div className="bg-slate-950/80 p-2.5 rounded-lg border border-amber-500/30 text-amber-200 font-mono text-[11px]">
+                👉 GitHub Repo ➔ <strong>Settings</strong> ➔ <strong>Pages</strong> ➔ "Build and deployment" Source me <strong>"GitHub Actions"</strong> select karein!
+              </div>
+              <p className="text-slate-400">
+                (By default GitHub ise <em>"Deploy from a branch"</em> par rakhta hai, jiski wajah se Actions ko Pages deploy karne ki permission nahi milti).
+              </p>
+              <div className="pt-1">
+                <a
+                  href={`https://github.com/${cleanUser}/${cleanRepo}/settings/pages`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 text-sky-400 hover:text-sky-300 underline font-medium"
+                >
+                  <span>Open {cleanRepo} Pages Settings</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
+          </div>
+
           {/* Generated Shareable Links */}
           <div className="space-y-3">
             <div className="text-xs font-bold text-slate-200 flex items-center justify-between">
